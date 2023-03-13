@@ -1,5 +1,14 @@
+import Landing from "./pages/landingPage";
+import Budget from "./features/budget/budgetApp";
+
 function App() {
-  return <div>Hello world</div>;
+  const isLoggedIn = false;
+
+  if (!isLoggedIn) {
+    return <Landing />;
+  } else {
+    return <Budget />;
+  }
 }
 
 export default App;
