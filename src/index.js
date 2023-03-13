@@ -3,31 +3,45 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { store } from "./store/rtkStore";
+import { Provider } from "react-redux";
+
+import Root from "./routes/root";
+
 import ErrorPage from "./pages/errorPage";
 import LoginPage from "./pages/loginPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Root />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "login",
-    element: <LoginPage />,
-  },
-  {
-    path: "register",
-    element: <div>register page</div>,
+    children: [
+      {
+        index: true,
+        element: <App />,
+      },
+
+      {
+        path: "login",
+        element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <div>register page</div>,
+      },
+    ],
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
