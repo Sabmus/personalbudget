@@ -1,8 +1,10 @@
+import { useSelector } from "react-redux";
+
 import Landing from "./pages/landingPage";
 import Budget from "./features/budget/budgetApp";
 
 function App() {
-  const isLoggedIn = false;
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   if (!isLoggedIn) {
     return <Landing />;
