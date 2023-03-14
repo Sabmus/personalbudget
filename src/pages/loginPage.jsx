@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLogin } from "../hooks/useRequest";
 
 const initialState = {
   fields: {
@@ -24,8 +25,6 @@ const LoginPage = () => {
     const fieldErrors = validateForm(fields);
     setFormState({ ...formState, fieldErrors });
     if (Object.keys(fieldErrors).length) return;
-
-    console.log("form submitted");
   };
 
   const onInputChange = (event) => {
