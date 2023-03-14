@@ -33,7 +33,6 @@ const LoginPage = () => {
     fields[event.target.name] = event.target.value;
     setFormState({ ...formState, fields });
   };
-
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
